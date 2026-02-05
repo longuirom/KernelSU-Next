@@ -1113,8 +1113,10 @@ do_umount:
 	// because some su apps may setuid to untrusted_app but they are in global mount namespace
 	// when we umount for such process, that is a disaster!
 	bool is_zygote_child = ksu_is_zygote(old->security);
-#endif	
 	if (!is_zygote_child) {
+#else
+	if (!is_zygote(old->security)) {
+#endif	
 		pr_info("handle umount ignore non zygote child: %d\n",
 			current->pid);
 		return 0;
