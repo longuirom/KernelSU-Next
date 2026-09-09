@@ -10,7 +10,7 @@ config KSU
 	  module will be called kernelsu.
 
 # For easier extern ifdef handling
-config KSU_MANUAL_HOOK
+config KSU_V1
 	bool "KernelSU manual hook mode."
 	depends on KSU && KSU != m
 	default y if !KPROBES
