@@ -4,6 +4,7 @@
 #include <linux/gfp.h>
 #include <linux/kernel.h>
 #include <linux/overflow.h>
+#include <linux/version.h>
 #include <linux/sched/signal.h>
 #include <linux/slab.h>
 #include <linux/string.h>

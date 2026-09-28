@@ -24,6 +24,7 @@
 #include "compat/kernel_compat.h"
 #ifdef CONFIG_KSU_SUSFS
 #include <linux/susfs_def.h>
+#include "selinux/selinux.h"
 #endif // #ifdef CONFIG_KSU_SUSFS
 
 #ifdef CONFIG_KSU_SUSFS
@@ -88,8 +89,6 @@ extern void susfs_try_umount(uid_t uid);
 int ksu_handle_setresuid(uid_t old_uid, uid_t new_uid)
 {
     // we rely on the fact that zygote always call setresuid(3) with same uids
-    uid_t new_uid = ruid;
-    uid_t old_uid = current_uid().val;
     
     // We only interest in process spwaned by zygote
     if (!susfs_is_sid_equal(current_cred(), susfs_zygote_sid)) {
